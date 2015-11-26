@@ -13,7 +13,7 @@ sortedlist
    location are not included (e.g., :ref:`append <blist.append>`,
    :ref:`insert <blist.insert>`).  To add an element to the sortedlist, use
    :ref:`add <sortedlist.add>`.  To add several elements, use
-   :ref:`update <sortedlist.update>`.  To removal an element, use
+   :ref:`update <sortedlist.update>`.  To remove an element, use
    :ref:`discard <sortedlist.discard>`, :ref:`remove <sortedlist.remove>`, or
    :ref:`del L[i] <sortedlist.delitem>`.
 
@@ -25,6 +25,10 @@ sortedlist
    default value is ``None`` (compare the elements directly).  The
    *key* function must always return the same key for an item or the
    results are unpredictable.
+
+   A :class:`sortedlist` can be used as an order statistic tree
+   (Cormen *et al.*, *Introduction to Algorithms*, ch. 14)
+   that allows duplicate keys.
 
    .. method:: x in L
 
@@ -66,6 +70,8 @@ sortedlist
       Requires |theta(log n)| operations in the worst case but only
       |theta(1)| operations if the list's size has not been changed
       recently.  Requires no comparisons in any case.
+
+      (Cormen *et al.* call this operation "SELECT".)
 
       :rtype: item
 
@@ -197,6 +203,8 @@ sortedlist
 
       In the worst case, requires |theta(log**2 m)| operations and
       |theta(log m)| comparisons, where *m* is *stop* - *start*.
+
+      (Cormen *et al.* call this operation "RANK".)
 
       :rtype: :class:`int`
 
